@@ -1,0 +1,319 @@
+
+* {
+    
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 40px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+/* LOGO */
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.logo-container h1 {
+    font-size: 22px;
+    color: #d60000;
+}
+
+/* MENU */
+.menu {
+    display: flex;
+    gap: 30px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.menu a:hover {
+    color: #d60000;
+}
+
+/* BOTÃO */
+.btn {
+    background: #d60000;
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #b80000;
+}
+
+.background-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.background-slider img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.background-slider img.active {
+    opacity: 1;
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    color: white;
+}
+
+/* ESCURECER FUNDO */
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* TEXTO */
+.hero-text {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+}
+
+.hero-text h1 {
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.hero-text span {
+    font-weight: bold;
+}
+
+/* BOTÃO */
+.btn-hero {
+    display: inline-block;
+    margin-top: 25px;
+    background: #d60000;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-hero:hover {
+    background: #b80000;
+}
+
+.footer {
+    background: #0f0f0f;
+    color: #fff;
+    padding-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 60px 40px;
+}
+
+.footer-col {
+    width: 220px;
+}
+
+.footer-col h2 {
+    color: #d60000;
+    margin-bottom: 15px;
+}
+
+.footer-col h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.footer-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.footer-col a {
+    display: block;
+    text-decoration: none;
+    color: #ccc;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: #d60000;
+}
+
+/* LINHA FINAL */
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #222;
+    font-size: 13px;
+    color: #aaa;
+}
+
+.planos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px 20px;
+    background: #f5f5f5;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #ddd;
+    padding: 25px;
+    width: 250px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    background: #e6e6e6;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+    font-size: 14px;
+}
+
+.card h1 {
+    font-size: 36px;
+    margin: 10px 0 20px;
+}
+
+.card button {
+    background: #e60000;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.card button:hover {
+    background: #cc0000;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.card li {
+    margin: 8px 0;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    /* HERO */
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero {
+        padding: 20px;
+        height: auto;
+    }
+
+    /* BENEFICIOS */
+    .beneficios {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* SIMULAÇÃO */
+    .box {
+        width: 100%;
+    }
+
+    /* CONTATO */
+    .contato {
+        padding: 40px 20px;
+    }
+
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}

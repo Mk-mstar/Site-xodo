@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale conosco</title>
+    <style>
+        .contato {
+    padding: 60px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.contato form {
+    max-width: 500px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contato input,
+
+.contato textarea {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contato button {
+    background: #d32525; /* verde Whats */
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contato button:hover {
+    background: #ff0000;
+}
+
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    /* HERO */
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero {
+        padding: 20px;
+        height: auto;
+    }
+
+    /* BENEFICIOS */
+    .beneficios {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* SIMULAÇÃO */
+    .box {
+        width: 100%;
+    }
+
+    /* CONTATO */
+    .contato {
+        padding: 40px 20px;
+    }
+
+}
+    </style>
+</head>
+<body>
+    <section class="contato">
+
+    <h2>Fale Conosco</h2>
+    <p>Preencha os dados e fale direto no WhatsApp.</p>
+
+    <form id="formContato">
+
+        <input type="text" id="nome" placeholder="Seu nome" required>
+        <input type="email" id="email" placeholder="Seu email" required>
+        <input type="text" id="telefone" placeholder="Telefone" required>
+
+        <textarea id="mensagem" placeholder="Digite sua mensagem" required></textarea>
+
+        <button type="submit">Enviar pelo WhatsApp</button>
+
+    </form>
+
+    <script>
+document.getElementById("formContato").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let nome = document.getElementById("nome").value;
+    let email = document.getElementById("email").value;
+    let telefone = document.getElementById("telefone").value;
+    let mensagem = document.getElementById("mensagem").value;
+
+    let numero = "5511986497838"; 
+
+    let texto = `Olá! Vim pelo site da Êxodo, tenho um interesse em saber mais sobre os serviços.
+
+Nome: ${nome}
+Email: ${email}
+Telefone: ${telefone}
+
+Mensagem:
+${mensagem}`;
+
+    let url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, "_blank");
+});
+</script>
+
+</section>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #111;
+    color: white;
+    padding: 20px;
+}
+
+.card {
+    background: #222;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<script>
+// 🔒 PROTEÇÃO
+if (localStorage.getItem("auth") !== "true") {
+    alert("Acesso negado!");
+    window.location.href = "index.html";
+}
+</script>
+
+<h1>Painel Admin</h1>
+
+<button onclick="logout()">Sair</button>
+
+<div id="lista"></div>
+
+<script>
+function carregar() {
+
+    let dados = JSON.parse(localStorage.getItem("leads")) || [];
+    let lista = document.getElementById("lista");
+
+    lista.innerHTML = "";
+
+    if (dados.length === 0) {
+        lista.innerHTML = "<p>Nenhum lead</p>";
+        return;
+    }
+
+    dados.forEach((lead, i) => {
+        let div = document.createElement("div");
+        div.className = "card";
+
+        div.innerHTML = `
+            <p><strong>${lead.nome}</strong></p>
+            <p>${lead.tipo}</p>
+            <p>R$ ${lead.valor}</p>
+            <p>Parcela: R$ ${lead.parcela}</p>
+            <button onclick="excluir(${i})">Excluir</button>
+        `;
+
+        lista.appendChild(div);
+    });
+}
+
+function excluir(i) {
+    let dados = JSON.parse(localStorage.getItem("leads")) || [];
+    dados.splice(i, 1);
+    localStorage.setItem("leads", JSON.stringify(dados));
+    carregar();
+}
+
+function logout() {
+    localStorage.removeItem("auth");
+    window.location.href = "index.html";
+}
+
+window.onload = carregar;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Simulação de Consórcio</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+}
+
+
+.container {
+    display: flex;
+    max-width: 900px;
+    margin: 60px auto;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+}
+
+
+.left {
+    width: 40%;
+    background: #eeeeee;
+    padding: 40px;
+}
+
+.left h2 {
+    margin-bottom: 10px;
+}
+
+.left p {
+    color: #666;
+}
+
+
+.right {
+    width: 60%;
+    padding: 40px;
+}
+
+
+label {
+    font-size: 14px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.radio-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.radio-item input {
+    width: auto;
+    margin: 0;
+    transform: scale(1.2);
+}
+
+
+button {
+    width: 100%;
+    padding: 12px;
+    background: #e60000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #cc0000;
+}
+
+/* RESULTADO */
+.resultado {
+    margin-top: 20px;
+}
+
+.box-resultado {
+    border: 2px solid #333;
+    padding: 15px;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.footer {
+    background: #0f0f0f;
+    color: #fff;
+    padding-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 60px 40px;
+}
+
+.footer-col {
+    width: 220px;
+}
+
+.footer-col h2 {
+    color: #d60000;
+    margin-bottom: 15px;
+}
+
+.footer-col h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.footer-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc;
+}
+
+.footer-col a {
+    display: block;
+    text-decoration: none;
+    color: #ccc;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-col a:hover {
+    color: #d60000;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #222;
+    font-size: 13px;
+    color: #aaa;
+}
+
+@media (max-width: 768px) {
+
+    /* NAVBAR */
+    header {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    /* HERO */
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero {
+        padding: 20px;
+        height: auto;
+    }
+
+    /* BENEFICIOS */
+    .beneficios {
+        flex-direction: column;
+        padding: 30px 20px;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    /* SIMULAÇÃO */
+    .box {
+        width: 100%;
+    }
+
+    /* CONTATO */
+    .contato {
+        padding: 40px 20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+<h1 onclick="acessoSecreto()">Êxodo Soluções Financeiras</h1>
+<div class="container">
+
+
+    <div class="left">
+        <h2>Faça sua simulação</h2>
+        <p>Insira seus dados que um consultor entrará em contato com as melhores opções.</p>
+
+        <p><strong>(83) 4009-4000 / (11) 2649-5700</strong></p>
+        <p></p>
+    </div>
+
+
+    <div class="right">
+
+        <label>Nome *</label>
+        <input type="text" id="nome">
+
+        <label>Email *</label>
+        <input type="email" id="email">
+
+        <label>Telefone *</label>
+        <input type="text" id="telefone">
+
+        <label>Tipo de consórcio *</label>
+
+        <div class="radio-group">
+            <label class="radio-item">
+                <input type="radio" name="tipo" value="Imóvel">
+                <span>Imóvel</span>
+            </label>
+
+            <label class="radio-item">
+                <input type="radio" name="tipo" value="Automóvel">
+                <span>Automóvel</span>
+            </label>
+
+            <label class="radio-item">
+                <input type="radio" name="tipo" value="Pesados">
+                <span>Pesados</span>
+            </label>
+
+            <label class="radio-item">
+                <input type="radio" name="tipo" value="Moto">
+                <span>Moto</span>
+            </label>
+        </div>
+
+        <label>Valor desejado *</label>
+        <input type="number" id="valor">
+
+        <button onclick="simular()">Simular</button>
+
+        <div class="resultado" id="resultado"></div>
+
+    </div>
+
+</div>
+
+<script>
+function simular() {
+    let valor = parseFloat(document.getElementById("valor").value);
+    let nome = document.getElementById("nome").value;
+    let email = document.getElementById("email").value;
+    let telefone = document.getElementById("telefone").value;
+    let tipo = document.querySelector('input[name="tipo"]:checked')?.value;
+
+    if (!valor || !nome || !tipo || !email || !telefone) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
+    let prazo = 60;
+    let taxa = 0.20;
+
+    let taxaTotal = valor * taxa;
+    let total = valor + taxaTotal;
+    let parcela = total / prazo;
+
+    // 🔥 SALVAR NO LOCALSTORAGE (ESSA PARTE FALTAVA)
+    let leads = JSON.parse(localStorage.getItem("leads")) || [];
+
+    leads.push({
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        tipo: tipo,
+        valor: valor,
+        parcela: parcela.toFixed(2),
+        total: total.toFixed(2)
+    });
+
+    localStorage.setItem("leads", JSON.stringify(leads));
+
+    // RESULTADO NA TELA
+    document.getElementById("resultado").innerHTML = `
+        <div class="box-resultado">
+            <p><strong>Olá, ${nome}!</strong></p>
+            <p>Recebemos sua solicitação.</p>
+
+            <hr>
+
+            <p><strong>Simulação:</strong></p>
+            <p>Tipo: ${tipo}</p>
+            <p>Parcela: R$ ${parcela.toFixed(2)}</p>
+            <p>Total: R$ ${total.toFixed(2)}</p>
+            <p>Entrada: R$ ${taxaTotal.toFixed(2)}</p>
+        </div>
+    `;
+}
+</script>
+
+<script>
+let cliques = 0;
+
+function acessoSecreto() {
+    cliques++;
+
+    if (cliques >= 5) {
+        let senha = prompt("Área restrita:");
+
+        if (senha === "admin123") {
+            localStorage.setItem("auth", "true");
+            window.location.href = "admin.html";
+        } else {
+            alert("Senha incorreta");
+        }
+
+        cliques = 0;
+    }
+}
+</script>
+
+    <div class="logo-container"></div>
+<footer class="footer">
+
+    <div class="footer-container">
+
+
+        <div class="footer-col">
+            <h2>Êxodo Consórcios</h2>
+            <p>Especialistas em realizar sonhos com planejamento financeiro inteligente. 
+            Consórcios para imóveis, veículos e muito mais.</p>
+        </div>
+
+   
+        <div class="footer-col">
+            <h3>Links rápidos</h3>
+            <a href="#">Home</a>
+            <a href="#">Planos</a>
+            <a href="#">A Êxodo</a>
+            <a href="#">Fale conosco</a>
+        </div>
+
+   
+        <div class="footer-col">
+            <h3>Consórcios</h3>
+            <a href="#">Imóveis</a>
+            <a href="#">Automóveis</a>
+            <a href="#">Motos</a>
+            <a href="#">Pesados</a>
+        </div>
+
+        
+        <div class="footer-col">
+            <h3>Contato</h3>
+            <p>📞 (11) 99999-9999</p>
+            <p>📧 exodosolucoesfinanceiras@gmail.com</p>
+            <p>📍 São Paulo - SP</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Êxodo Consórcios - Todos os direitos reservados</p>
+    </div>
+
+</footer>
+    </div>
+
+</body>
+</html>

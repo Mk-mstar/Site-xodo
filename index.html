@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Êxodo Soluções Financeiras</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+<div class="background-slider">
+    <img src="img/Screenshot_1.png" class="active">
+    <img src="img/Screenshot_3.png">
+    <img src="img/Screenshot_2.png">
+    <img src="img/Screenshot_1.png">
+</div>
+
+<header class="navbar">
+    
+    <div class="logo-container">
+     
+        <img id="logo" src="img/Design sem nome.jpg" style="cursor:pointer;">
+        <h1>Êxodo</h1>
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Home</a>
+        <a href="planos.html">Planos</a>
+        <a href="exodo.html">A Êxodo</a>
+        <a href="faleconosco.html">Fale conosco</a>
+    </nav>
+
+    <a href="simulacao.html" class="btn">Faça sua simulação</a>
+
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>
+            Conquiste sua casa nova com a <br>
+            <span>Êxodo</span>
+        </h1>
+
+        <a href="simulacao.html" class="btn-hero">Faça sua simulação</a>
+    </div>
+</section>
+
+<section class="planos">
+
+    <div class="card">
+        <h3>Automóveis</h3>
+        <p>Crédito a partir de</p>
+        <h1>R$ 38.000</h1>
+        <a href="simulacao.html" class="btn">Simule agora</a>
+        <ul>
+            <li>✔ Livre de juros</li>
+            <li>✔ Nacional ou importado</li>
+            <li>✔ Novo ou usado</li>
+            <li>✔ Sem burocracia</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Imóveis</h3>
+        <p>Crédito a partir de</p>
+        <h1>R$ 110.000</h1>
+        <a href="simulacao.html" class="btn">Simule agora</a>
+        <ul>
+            <li>✔ Juros ZERO</li>
+            <li>✔ Use seu FGTS</li>
+            <li>✔ Residencial ou industrial</li>
+            <li>✔ Aquisição ou reforma</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Pesados</h3>
+        <p>Crédito a partir de</p>
+        <h1>R$ 135.000</h1>
+        <a href="simulacao.html" class="btn">Simule agora</a>
+        <ul>
+            <li>✔ Sem juros</li>
+            <li>✔ Caminhão e máquinas</li>
+            <li>✔ Novos ou usados</li>
+            <li>✔ Livre escolha</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h3>Motos</h3>
+        <p>Crédito a partir de</p>
+        <h1>R$ 14.000</h1>
+        <a href="simulacao.html" class="btn">Simule agora</a>
+        <ul>
+            <li>✔ Sem juros</li>
+            <li>✔ Novas ou usadas</li>
+            <li>✔ Nacional ou importadas</li>
+            <li>✔ Livre escolha</li>
+        </ul>
+    </div>
+
+    <a href="https://wa.me/5511986497838" class="whatsapp-float" target="_blank">💬</a>
+
+</section>
+
+<script>
+window.onload = function() {
+
+    // 🎞️ SLIDER
+    const imagens = document.querySelectorAll('.background-slider img');
+    let index = 0;
+
+    setInterval(() => {
+        imagens[index].classList.remove('active');
+        index = (index + 1) % imagens.length;
+        imagens[index].classList.add('active');
+    }, 4000);
+
+    // 🔐 LOGIN ESCONDIDO
+    let cliques = 0;
+
+    document.getElementById("logo").addEventListener("click", function() {
+        cliques++;
+
+        if (cliques >= 5) {
+            let senha = prompt("Área restrita:");
+
+            if (senha === "admin123") {
+                localStorage.setItem("auth", "true");
+                window.location.href = "./paineladm.html"; // ✅ corrigido
+            } else {
+                alert("Senha incorreta");
+            }
+
+            cliques = 0;
+        }
+    });
+
+};
+</script>
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+        <div class="footer-col">
+            <h2>Êxodo Consórcios</h2>
+            <p>Especialistas em realizar sonhos com planejamento financeiro inteligente.</p>
+        </div>
+
+        <div class="footer-col">
+            <h3>Links rápidos</h3>
+            <a href="index.html">Home</a>
+            <a href="planos.html">Planos</a>
+            <a href="sobre.html">A Êxodo</a>
+            <a href="faleconosco.html">Fale conosco</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Consórcios</h3>
+            <a href="imoveis.html">Imóveis</a>
+            <a href="automoveis.html">Automóveis</a>
+            <a href="motos.html">Motos</a>
+            <a href="pesados.html">Pesados</a>
+        </div>
+
+        <div class="footer-col">
+            <h3>Contato</h3>
+            <p>📞 (11) 99999-9999</p>
+            <p>📧 exodosolucoesfinanceiras@gmail.com</p>
+            <p>📍 São Paulo - SP</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Êxodo Soluções Financeiras</p>
+    </div>
+
+</footer>
+
+</body>
+</html>
